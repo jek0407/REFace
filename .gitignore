@@ -1,0 +1,35 @@
+# Ignore Other_dependencies folder
+Other_dependencies/
+
+# Our models
+models/REFace/checkpoints/
+
+# Example image outputs
+examples/FaceSwap/Swap_outs/
+
+# Stable diffusion models
+pretrained_models/sd-v1-4.ckpt
+pretrained_models/sd-v1-4-modified-9channel.ckpt
+
+# Paint-by-example model
+checkpoints/model.ckpt
+
+# Expression model (For quantitative analysis only)
+eval_tool/Deep3DFaceRecon_pytorch_edit/BFM/*.mat
+
+# Quantitative results
+Quantitative_Analysis/
+
+# Unwanted files
+niqe
+**/*.pyc
+
+# Data
+dataset/
+
+# Results
+results/
+examples/FaceSwap/Source_1/
+examples/FaceSwap/Target_1/
+examples/FaceSwap/Swap_outs_50/
+examples/FaceSwap/Swap_outs/
