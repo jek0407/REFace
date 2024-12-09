@@ -1,49 +1,60 @@
-# REFace, for running in the sogang mmlab environment.
+# REFace, running in the sogang mmlab environment.
 
 This repository gives the implementation of Realistic and Efficient Face Swapping: A Unified Approach with Diffusion Models (WACV 2025)
 
 ![Example](assets/teaser2.jpeg)
 ### [Paper](https://arxiv.org/abs/2409.07269)
 
+# REFace Setup Guide
+This guide provides step-by-step instructions to set up and run the REFace project in a Docker environment.
 
+---
+## Step 1: Clone the Project
 
-## Start (Pretrained Model)
+Clone the repository and navigate to the project directory:
+
 ```
 git clone https://github.com/jek0407/REFace.git
-cd models/REFace/checkpoints/
-wget -c https://huggingface.co/Sanoojan/REFace/resolve/main/last.ckpt
-```
-or Download locally:
-```
-\\mldisk2\nfs_shared\deepfake\REFace\last.ckpt
+cd REFace
 ```
 
-## Other dependencies 
-Download "Other_dependencies": 
+## Step 2: Download Other Dependencies
+
+Manually download the Other_dependencies folder from the shared directory:
+
 ```
 \\mldisk2\nfs_shared\deepfake\REFace\Other_dependencies
 ```
+Place the "Other_dependencies" folder in the "root" of the cloned REFace directory
 
-## Docker Environment
 
-Build Docker image wih:
+## Step 3: Build the Docker Environment
+Build the Docker image:
+
 ```
 docker build -t reface:latest .
 ```
-Activate Docker container with:
-```
-docker run --gpus all -v $(pwd):/workspace -it reface:latest g
-```
+This process will automatically set up the environment and download the necessary pretrained models.
 
-## Conda Environment
-A suitable [conda](https://conda.io/) environment named `REFace` can be created
-and activated with:
+
+## Step 4: Activate the Docker container
+
+Run the Docker container with GPU support and map the project directory:
 
 ```
-conda create -n "REFace" python=3.10.13 -y
-conda activate REFace
-sh setup.sh
+docker run --gpus all -v $(pwd):/workspace -it reface:latest
 ```
+
+## Notes
+
+### Ensure the Other_dependencies folder is placed in the root directory before building the Docker image.
+### The Docker build process will handle most dependencies, including downloading pretrained models.
+### Prerequisites:
+#### An NVIDIA GPU with the necessary drivers installed.
+##### Permissions to execute Docker commands with GPU access.
+### If you encounter any issues during setup:
+##### Verify that the Other_dependencies folder is correctly placed.
+##### Ensure Docker is properly installed and configured for GPU usage.
 
 
 ## Demo
