@@ -44,16 +44,20 @@ Run the Docker container with GPU support and map the project directory:
 ```
 docker run --gpus all -v $(pwd):/workspace -it reface:latest
 ```
----
+
 Ensure the Other_dependencies folder is placed in the root directory before building the Docker image.
 The Docker build process will handle most dependencies, including downloading pretrained models.
 
 ## Prerequisites:
 An NVIDIA GPU with the necessary drivers installed.
 Permissions to execute Docker commands with GPU access.
+
+
 ## If you encounter any issues during setup:
 Verify that the Other_dependencies folder is correctly placed.
 Ensure Docker is properly installed and configured for GPU usage.
+
+
 ---
 
 ## Demo
