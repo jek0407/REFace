@@ -8,12 +8,12 @@ device=0
 
 
 CONFIG="models/REFace/configs/project_ffhq.yaml"
-CKPT="models/REFace/checkpoints/saved.ckpt"
+CKPT="models/REFace/checkpoints/last.ckpt"
 
 
 #change this
-target_path="examples/FaceSwap/Target"  
-source_path="examples/FaceSwap/Source"
+target_path="examples/FaceSwap/One_target"  
+source_path="examples/FaceSwap/One_source"
 
 
 

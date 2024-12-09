@@ -15,13 +15,29 @@ mkdir chcekpoints/
 cd checkpoints/
 wget -c https://huggingface.co/Sanoojan/REFace/resolve/main/last.ckpt
 ```
-or Download locally :  (\\mldisk2\nfs_shared\deepfake\REFace)
-
+or Download locally:
+```
+\\mldisk2\nfs_shared\deepfake\REFace\last.ckpt
+```
 
 ## Other dependencies 
-Download "Other_dependencies" : (\\mldisk2\nfs_shared\deepfake)
+Download "Other_dependencies": 
+```
+\\mldisk2\nfs_shared\deepfake\REFace\Other_dependencies
+```
 
-## Requirements
+## Docker Environment
+
+Build Docker image wih:
+```
+docker build -t reface:latest .
+```
+Activate Docker container with:
+```
+docker run --gpus all -v $(pwd):/workspace -it reface:latest 
+```
+
+## Conda Environment
 A suitable [conda](https://conda.io/) environment named `REFace` can be created
 and activated with:
 
