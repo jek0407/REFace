@@ -136,10 +136,6 @@ bash evaluate_all.sh
 ```
 
 
-## Citing Us
-If you find our work valuable, we kindly ask you to consider citing our paper and starring ⭐ our repository. Our implementation includes a standard metric code and we hope it make life easier for the generation research community.
-
-
 ```
 @article{baliah2024realistic,
   title={Realistic and Efficient Face Swapping: A Unified Approach with Diffusion Models},
@@ -153,9 +149,6 @@ If you find our work valuable, we kindly ask you to consider citing our paper an
 
 This code borrows heavily from [Paint-By-Example](https://github.com/Fantasy-Studio/Paint-by-Example).
 
-## Maintenance
-
-Please open a GitHub issue for any help. If you have any questions regarding the technical details, feel free to contact us. 
 
 ## License
 
