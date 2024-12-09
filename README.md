@@ -1,4 +1,4 @@
-# REFace
+# REFace, for running in the sogang mmlab environment.
 
 This repository gives the implementation of Realistic and Efficient Face Swapping: A Unified Approach with Diffusion Models (WACV 2025)
 
