@@ -10,9 +10,7 @@ This repository gives the implementation of Realistic and Efficient Face Swappin
 ## Start (Pretrained Model)
 ```
 git clone https://github.com/jek0407/REFace.git
-cd models/REFace/ 
-mkdir chcekpoints/
-cd checkpoints/
+cd models/REFace/checkpoints/
 wget -c https://huggingface.co/Sanoojan/REFace/resolve/main/last.ckpt
 ```
 or Download locally:
@@ -34,7 +32,7 @@ docker build -t reface:latest .
 ```
 Activate Docker container with:
 ```
-docker run --gpus all -v $(pwd):/workspace -it reface:latest 
+docker run --gpus all -v $(pwd):/workspace -it reface:latest g
 ```
 
 ## Conda Environment

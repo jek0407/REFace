@@ -13,8 +13,4 @@ pip install -e git+https://github.com/openai/CLIP.git@main#egg=clip
 # install main project
 pip install -e .
 
-# clone and install nvdiffrast
-cd eval_tool/Deep3DFaceRecon_pytorch_edit/
-git clone https://github.com/NVlabs/nvdiffrast
-cd nvdiffrast/nvdiffrast
-python setup.py install
+

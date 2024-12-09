@@ -22,7 +22,7 @@ COPY requirements.txt /workspace/requirements.txt
 RUN pip install -r /workspace/requirements.txt
 
 # dift 설치 (GitHub 저장소에서 설치)
-# RUN pip install git+https://github.com/Tsingularity/dift.git
+RUN pip install git+https://github.com/Tsingularity/dift.git
 
 # taming-transformers 설치
 RUN pip install -e git+https://github.com/CompVis/taming-transformers.git@master#egg=taming-transformers
@@ -35,9 +35,14 @@ WORKDIR /workspace
 COPY . /workspace
 RUN pip install -e .
 
-
 # Python Path 설정
 ENV PYTHONPATH=$PYTHONPATH:/workspace
+
+# Pretrained Model 다운로드 스크립트 (추가)
+RUN mkdir -p /workspace/models/REFace/checkpoints && \
+    wget -c https://huggingface.co/Sanoojan/REFace/resolve/main/last.ckpt -P /workspace/models/REFace/checkpoints/
+
+# Other_dependencies는 외부에서 미리 설정한다고 가정
 
 # 컨테이너 실행 시 REFace 스크립트 실행
 CMD ["sh", "inference_selected.sh"]
