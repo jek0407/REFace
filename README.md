@@ -61,6 +61,13 @@ docker-compose logs -f
 Ensure the Other_dependencies folder is placed in the root directory before building the Docker image.
 The Docker build process will handle most dependencies, including downloading pretrained models.
 
+
+## Step 5: Docker container 
+
+```
+docker exec -it REFace bash
+```
+
 ## Prerequisites:
 An NVIDIA GPU with the necessary drivers installed.
 Permissions to execute Docker commands with GPU access.
