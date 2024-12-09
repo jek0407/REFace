@@ -26,6 +26,17 @@ Manually download the Other_dependencies folder from the shared directory:
 \\mldisk2\nfs_shared\deepfake\REFace\Other_dependencies
 ```
 Place the "Other_dependencies" folder in the "root" of the cloned REFace directory
+```
+REFace
+├── assets
+├── configs
+├── docker-compos
+├── eval_tool
+├── examples
+├── ldm
+├── models
+├── Other_dependencies
+```
 
 
 ## Step 3: Build the Docker Environment
