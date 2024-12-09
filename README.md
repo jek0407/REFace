@@ -1,21 +1,25 @@
 # REFace
 
-This repository gives the official implementation of Realistic and Efficient Face Swapping: A Unified Approach with Diffusion Models (WACV 2025)
+This repository gives the implementation of Realistic and Efficient Face Swapping: A Unified Approach with Diffusion Models (WACV 2025)
 
 ![Example](assets/teaser2.jpeg)
 ### [Paper](https://arxiv.org/abs/2409.07269)
-[Sanoojan Baliah](https://www.linkedin.com/in/sanoojan/), Qinliang Lin, Shengcai Liao, Xiaodan Liang, and Muhammad Haris Khan
-
-## Abstract
->Despite promising progress in face swapping task, realistic swapped images remain elusive, often marred by artifacts, particularly in scenarios involving high pose variation, color differences, and occlusion. To address these issues, we propose a novel approach that better harnesses diffusion models for face-swapping by making following core contributions. (a) We propose to re-frame the face-swapping task as a self-supervised, train-time inpainting problem, enhancing the identity transfer while blending with the target image. (b) We introduce a multi-step Denoising Diffusion Implicit Model (DDIM) sampling during training, reinforcing identity and perceptual similarities. (c) Third, we introduce CLIP feature disentanglement to extract pose, expression, and lighting information from the target image, improving fidelity. (d) Further, we introduce a mask shuffling technique during inpainting training, which allows us to create a so-called universal model for swapping, with an additional feature of head swapping. Ours can swap hair and even accessories, beyond traditional face swapping. Unlike prior works reliant on multiple off-the-shelf models, ours is a relatively unified approach and so it is resilient to errors in other off-the-shelf models. Extensive experiments on FFHQ and CelebA datasets validate the efficacy and robustness of our approach, showcasing high-fidelity, realistic face-swapping with minimal inference time. Our code is available here (https://github.com/Sanoojan/REFace)
 
 
 
-## News
-- *2024-09-10* Release training code
-- *2024-09-10* Release test benchmark.
-- *2024-09-14* Release checkpoints and other dependencies
+## Start (Pretrained Model)
+```
+git clone https://github.com/jek0407/REFace.git
+cd models/REFace/ 
+mkdir chcekpoints/
+cd checkpoints/
+wget -c https://huggingface.co/Sanoojan/REFace/resolve/main/last.ckpt
+```
+or Download locally :  (\\mldisk2\nfs_shared\deepfake\REFace)
 
+
+## Other dependencies 
+Download "Other_dependencies" : (\\mldisk2\nfs_shared\deepfake)
 
 ## Requirements
 A suitable [conda](https://conda.io/) environment named `REFace` can be created
@@ -26,38 +30,6 @@ conda create -n "REFace" python=3.10.13 -y
 conda activate REFace
 sh setup.sh
 ```
-
-
-## Pretrained model
-
-Download our trained model [here](https://huggingface.co/Sanoojan/REFace/blob/main/last.ckpt).
-
-## Other dependencies 
-
-Download the following models from the provided links and place them in the corresponding paths to perform face swapping and quantitative evaluation.
-
-
-
-#### face parsing model (segmentation) 
-[Other_dependencies/face_parsing/79999_iter.pth](https://drive.google.com/file/d/154JgKpzCPW82qINcVieuPH3fZ2e0P812/view)
-
-#### Arcface ID retrieval model 
-[Other_dependencies/arcface/model_ir_se50.pth](https://drive.google.com/file/d/1KW7bjndL3QG3sxBbZxreGHigcCCpsDgn/view)
-
-#### Landmark detection model 
-[Other_dependencies/DLIB_landmark_det/shape_predictor_68_face_landmarks.dat](https://github.com/italojs/facial-landmarks-recognition/blob/master/shape_predictor_68_face_landmarks.dat)
-
-#### Expression model (For quantitative analysis only) 
-[Other_dependencies/face_recon/epoch_latest.pth](https://drive.google.com/file/d/1BlDBB4dLLrlN3cJhVL4nmrd_g6Jx6uP0/view?usp=drive_link)
-
-[eval_tool/Deep3DFaceRecon_pytorch_edit/BFM/*.mat](https://github.com/sicxu/Deep3DFaceRecon_pytorch/tree/master/BFM)
-
-
-#### pose model (For quantitative analysis only)
-[Other_dependencies/Hopenet_pose/hopenet_robust_alpha1.pkl](https://github.com/human-analysis/RankGAN/blob/master/models/hopenet_robust_alpha1.pkl)
-
-
-### Alternatively, all the models can be downloaded directly from our [huggingface repo](https://huggingface.co/Sanoojan/REFace/tree/main) and replace the Other_dependencies folder, and eval_tool/Deep3DFaceRecon_pytorch_edit/BFM folder.
 
 
 ## Demo
