@@ -6,6 +6,8 @@ services:
     build:
       context: ./  # Dockerfile이 있는 디렉토리
       dockerfile: Dockerfile
+    volumes:
+      - ./examples/FaceSwap:/workspace/examples/FaceSwap
     runtime: nvidia  # NVIDIA GPU 런타임 설정
     restart: always  # 컨테이너 자동 재시작
     ipc: "host"  # 호스트 메모리 공유
