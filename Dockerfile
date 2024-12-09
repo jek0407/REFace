@@ -10,9 +10,14 @@ ARG DEBIAN_FRONTEND=noninteractive
 # 필수 시스템 패키지 설치
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3 python3-pip python3-dev \
+    python3-tk \
     build-essential libgl1-mesa-glx libglib2.0-0 \
     git wget curl unzip \
     && rm -rf /var/lib/apt/lists/*
+
+
+# Python3 기본 설정
+RUN ln -sf /usr/bin/python3 /usr/bin/python
 
 # PyTorch 설치
 RUN pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu117
@@ -20,9 +25,6 @@ RUN pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchaudio==0.13.1
 # Python 패키지 설치
 COPY requirements.txt /workspace/requirements.txt
 RUN pip install -r /workspace/requirements.txt
-
-# dift 설치 (GitHub 저장소에서 설치)
-RUN pip install git+https://github.com/Tsingularity/dift.git
 
 # taming-transformers 설치
 RUN pip install -e git+https://github.com/CompVis/taming-transformers.git@master#egg=taming-transformers
@@ -35,14 +37,12 @@ WORKDIR /workspace
 COPY . /workspace
 RUN pip install -e .
 
-# Python Path 설정
-ENV PYTHONPATH=$PYTHONPATH:/workspace
-
-# Pretrained Model 다운로드 스크립트 (추가)
+# Pretrained Model 다운로드
 RUN mkdir -p /workspace/models/REFace/checkpoints && \
     wget -c https://huggingface.co/Sanoojan/REFace/resolve/main/last.ckpt -P /workspace/models/REFace/checkpoints/
 
-# Other_dependencies는 외부에서 미리 설정한다고 가정
+# Python Path 설정
+ENV PYTHONPATH=$PYTHONPATH:/workspace
 
-# 컨테이너 실행 시 REFace 스크립트 실행
-CMD ["sh", "inference_selected.sh"]
+# 디폴트 명령어
+CMD ["bash"]

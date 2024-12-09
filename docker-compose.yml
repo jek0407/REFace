@@ -1,0 +1,31 @@
+version: '2.3'
+
+services:
+  main:
+    container_name: REFace
+    build:
+      context: ./  # Dockerfile이 있는 디렉토리
+      dockerfile: Dockerfile
+    runtime: nvidia  # NVIDIA GPU 런타임 설정
+    restart: always  # 컨테이너 자동 재시작
+    ipc: "host"  # 호스트 메모리 공유
+    env_file:
+      - "docker-compose/main.env"  # 환경 변수 파일
+    volumes:
+      - type: volume
+        source: nfs_shared_
+        target: /nfs_shared_
+        volume:
+          nocopy: true  # 컨테이너 시작 시 복사 방지
+    ports:
+      - "32000:8000"  # 웹 애플리케이션 포트 매핑
+      - "32022:22"    # SSH 포트 매핑
+    stdin_open: true  # 대화형 터미널 활성화
+    tty: true         # pseudo-TTY 활성화
+
+volumes:
+  nfs_shared_:
+    driver_opts:
+      type: "nfs"
+      o: "addr=mldisk.sogang.ac.kr,nolock,soft,rw"  # NFS 서버 옵션
+      device: ":/volume3/nfs_shared_"  # 공유 디렉토리 경로
