@@ -45,7 +45,7 @@ REFace
 Build the Docker image:
 
 ```
-docker build -t reface:latest .
+docker-compose build
 ```
 This process will automatically set up the environment and download the necessary pretrained models.
 
@@ -55,7 +55,7 @@ This process will automatically set up the environment and download the necessar
 Run the Docker container with GPU support and map the project directory:
 
 ```
-docker run --gpus all -v $(pwd):/workspace -it reface:latest
+docker-compose logs -f
 ```
 
 Ensure the Other_dependencies folder is placed in the root directory before building the Docker image.
