@@ -2,7 +2,8 @@
 Other_dependencies/
 
 # Our models
-models/REFace/checkpoints/
+models/REFace/checkpoints/*
+!models/REFace/checkpoints/.gitkeep
 
 # Example image outputs
 examples/FaceSwap/Swap_outs/
