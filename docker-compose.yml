@@ -6,8 +6,6 @@ services:
     build:
       context: ./  # Dockerfile이 있는 디렉토리
       dockerfile: Dockerfile
-    volumes:
-      - ./examples/FaceSwap:/workspace/examples/FaceSwap
     runtime: nvidia  # NVIDIA GPU 런타임 설정
     restart: always  # 컨테이너 자동 재시작
     ipc: "host"  # 호스트 메모리 공유
@@ -19,6 +17,7 @@ services:
         target: /nfs_shared_
         volume:
           nocopy: true  # 컨테이너 시작 시 복사 방지
+      - ./examples/FaceSwap:/workspace/examples/FaceSwap
     ports:
       - "32000:8000"  # 웹 애플리케이션 포트 매핑
       - "32022:22"    # SSH 포트 매핑

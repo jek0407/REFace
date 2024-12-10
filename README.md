@@ -52,21 +52,15 @@ This process will automatically set up the environment and download the necessar
 
 ## Step 4: Activate the Docker container
 
-Run the Docker container with GPU support and map the project directory:
+Run the Docker container with:
 
 ```
-docker-compose logs -f
+docker exec -it REFace bash
 ```
 
 Ensure the Other_dependencies folder is placed in the root directory before building the Docker image.
 The Docker build process will handle most dependencies, including downloading pretrained models.
 
-
-## Step 5: Docker container 
-
-```
-docker exec -it REFace bash
-```
 
 ## Prerequisites:
 An NVIDIA GPU with the necessary drivers installed.
